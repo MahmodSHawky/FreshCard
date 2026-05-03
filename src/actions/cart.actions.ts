@@ -8,9 +8,12 @@ export async function addToCart(productId : string){
 try{
     const token = await getMyToken()
 
-  if(!token) {
-    throw new Error("please login frist...")
-  } 
+  if (!token) {
+  return {
+    status: "error",
+    message: "Please login first"
+  }
+  }
 
 
   const res = await fetch(`https://ecommerce.routemisr.com/api/v2/cart`, {
@@ -35,8 +38,11 @@ catch(err){
 export async function getLoggedUserCart(){  
   const token = await getMyToken()
 
-  if(!token) {
-    throw new Error("please login frist...")
+  if (!token) {
+  return {
+    status: "error",
+    message: "Please login first"
+  }
   }
 
 
@@ -55,8 +61,11 @@ export async function getLoggedUserCart(){
 export async function updateProductQuantaty(productId : string, count : number){  
   const token = await getMyToken()
 
-  if(!token) {
-    throw new Error("please login frist...")
+  if (!token) {
+  return {
+    status: "error",
+    message: "Please login first"
+  }
   }
 
 
@@ -76,8 +85,11 @@ export async function updateProductQuantaty(productId : string, count : number){
 export async function removeProductFromCart(productId : string){  
   const token = await getMyToken()
 
-  if(!token) {
-    throw new Error("please login frist...")
+  if (!token) {
+  return {
+    status: "error",
+    message: "Please login first"
+  }
   }
 
 
@@ -96,8 +108,11 @@ export async function removeProductFromCart(productId : string){
 export async function clearAllCartProducts(){  
   const token = await getMyToken()
 
-  if(!token) {
-    throw new Error("please login frist...")
+  if (!token) {
+  return {
+    status: "error",
+    message: "Please login first"
+  }
   }
 
   const res = await fetch(`https://ecommerce.routemisr.com/api/v2/cart`, {

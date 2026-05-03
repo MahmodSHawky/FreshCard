@@ -8,9 +8,12 @@ export async function addToWishlist(productId : string){
 try{
     const token = await getMyToken()
 
-  if(!token) {
-    throw new Error("please login frist...")
-  } 
+  if (!token) {
+  return {
+    status: "error",
+    message: "Please login first"
+  }
+  }
 
 
   const res = await fetch(`https://ecommerce.routemisr.com/api/v1/wishlist`, {
@@ -35,8 +38,11 @@ catch(err){
 export async function getLoggedUserWishlist(){  
   const token = await getMyToken()
 
-  if(!token) {
-    throw new Error("please login frist...")
+  if (!token) {
+  return {
+    status: "error",
+    message: "Please login first"
+  }
   }
 
 
@@ -56,8 +62,11 @@ export async function getLoggedUserWishlist(){
 export async function removeProductFromWishlist(productId : string){  
   const token = await getMyToken()
 
-  if(!token) {
-    throw new Error("please login frist...")
+  if (!token) {
+  return {
+    status: "error",
+    message: "Please login first"
+  }
   }
 
 

@@ -7,8 +7,11 @@ export async function onLinePayment(cartId: String, url:string = process.env.NEX
 
   const token = await getMyToken()
 
-  if(!token){
-    throw new Error("login first")
+  if (!token) {
+  return {
+    status: "error",
+    message: "Please login first"
+  }
   }
 
   const res = await fetch(`https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cartId}?url=${url}`,{
