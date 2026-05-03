@@ -2,6 +2,35 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
+.swiper-pagination-bullet-active {
+ width: 25px !important;
+ border-radius: 5px !important;
+} 
+
+/* شكل السهمين */
+.swiper-button-next,
+.swiper-button-prev {
+  background-color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color:rgb(0, 184, 0) !important;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+
+  transition: all 0.3s ease;
+}
+
+
+/* hover */
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  transform: scale(1.1);
+  background-color: #f0fdf4;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 /* @theme inline {
@@ -236,4 +265,15 @@
   html {
     @apply font-sans;
     }
+}
+
+
+
+body {
+  font-family: var(--font-exo), sans-serif;
+}
+
+
+.font-open-sans {
+  font-family: var(--font-open), sans-serif;
 }
