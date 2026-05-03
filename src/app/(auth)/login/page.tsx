@@ -30,7 +30,7 @@ export default function LoginPage() {
 
   async function mySubmit(data : LoginSchemaType) {
     console.log(data);
-    const response = await signIn("credentials", {...data, redirect : false , callbackUrl : "/"})    // this function from next-auth 
+    const response = await signIn("credentials", {...data, redirect : true , callbackUrl : "/"})    // this function from next-auth 
     console.log(response);
     
     // const isLoginSuccessfully = await userLogin(data)
