@@ -79,7 +79,6 @@ export const authOptions : NextAuthOptions= {
     //when ==> useSession  || getServerSession || api/auth/session
     session({ session, token }) {
     session.id = token.id
-    session.accessToken = token.routeToken  as string
 
     return session
   }
