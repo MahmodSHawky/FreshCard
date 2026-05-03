@@ -3,6 +3,7 @@ import Credentials from "next-auth/providers/credentials";
 import {jwtDecode} from "jwt-decode"
 
 export const authOptions : NextAuthOptions= {
+  secret: process.env.NEXTAUTH_SECRET,
   providers : [
     // way to login with email & password
     Credentials({
@@ -37,7 +38,7 @@ export const authOptions : NextAuthOptions= {
           console.log("resultofffffflogin",result);
           
 
-          const jwt :{id : string} = jwtDecode(result.token)
+          const jwt = jwtDecode<{ id: string }>(result.token)
           
           //use it to generate increpted token based on it
           return {
@@ -76,15 +77,12 @@ export const authOptions : NextAuthOptions= {
     },
     
     //when ==> useSession  || getServerSession || api/auth/session
-    session({session , token}){
-      session.id = token.id
-      
+    session({ session, token }) {
+    session.id = token.id
+    session.accessToken = token.routeToken  as string
 
-      
-      
-      return session 
-
-    }
+    return session
+  }
   },
   pages :{
     signIn : "/login"
